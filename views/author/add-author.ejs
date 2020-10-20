@@ -1,0 +1,17 @@
+<%- include('../includes/nav.ejs') %>
+<h2>Add author</h2>
+<hr/>
+<form action="/author/add" method="post" class="form-group">
+    <div>
+        <label for="firstName">First name</label>
+        <input type="text" name="firstName" id="firstName" class="form-control"/>
+        <br/>
+        <label for="lastName">Last name</label>
+        <input type="text" name="lastName" id="lastName" class="form-control"/>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    </div>
+    <button type="submit" class="btn btn-success">Add author</button>
+</form>
+
+<%- include('../includes/back.ejs') %>
+<%- include('../includes/footer.ejs') %>

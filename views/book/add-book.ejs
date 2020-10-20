@@ -1,0 +1,31 @@
+<%- include('../includes/nav.ejs') %>
+<h2>Add book for <%= author.firstName %> <%= author.lastName %></h2>
+<hr/>
+<% if(errors.length > 0){ %>
+    <div class="error-box">
+        <% errors.forEach(err => { %>
+            <div><%= err %></div>  
+        <% }); %>
+    </div>
+<% } %>
+<form action="/author/<%= author._id %>/book-add" class="form-group" method="POST" enctype="multipart/form-data" >
+    <div>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="<%= oldInput.title %>" class="form-control"/>
+        <br/>
+        <label for="pageCount">Page count</label>
+        <input type="number" name="pageCount" id="pageCount" value="<%= oldInput.pageCount %>" class="form-control"/>
+        <br/>
+        <label for="image">Image</label>
+        <br/>
+        <input type="file" name="image" id="image" >
+        <br/><br/>
+        <label for="description">Description</label>
+        <textarea cols="4" name="description" id="description" class="form-control"><%= oldInput.description %></textarea>
+        <input type="hidden" name="_csrf" id="_csrf" value="<%= csrfToken %>">
+    </div>
+    <button type="submit" class="btn btn-success">Add book</button>
+</form>
+
+<%- include('../includes/back.ejs') %>
+<%- include('../includes/footer.ejs') %>

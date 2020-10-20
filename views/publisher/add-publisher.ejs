@@ -1,0 +1,26 @@
+<%- include('../includes/nav.ejs') %>
+<h2>Add publisher</h2>
+<hr/>
+<form action="/publisher/add" method="post" class="form-group">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" class="form-control"/>
+        <br/>
+        <label for="establishmentDate">Establishment date</label>
+        <input type="date" name="establishmentDate" id="establishmentDate" class="form-control"/>
+        <br/>
+        <label for="city">City</label>
+        <input type="text" name="city" id="city" class="form-control"/>
+        <br/>
+        <label for="street">Street</label>
+        <input type="text" name="street" id="street" class="form-control"/>
+        <br/>
+        <label for="postCode">Post Code</label>
+        <input type="text" name="postCode" id="postCode" class="form-control"/>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    </div>
+    <button type="submit" class="btn btn-success">New publisher</button>
+</form>
+
+<%- include('../includes/back.ejs') %>
+<%- include('../includes/footer.ejs') %>

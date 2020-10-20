@@ -1,0 +1,23 @@
+<%- include('../includes/nav.ejs') %>
+<h2>Log In</h2>
+<hr/>
+<% if(error !== ''){ %>
+    <div class="error-box">        
+        <%= error %>
+    </div>
+<% } %>
+<form action="/login" method="post" class="form-group">
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="<%= oldInput.email %>" class="form-control"/>
+        <br/>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control"/>
+        <br/>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    </div>
+    <button type="submit" class="btn btn-success button-submit">Log In</button>
+</form>
+<p>user4@mail.com</p>
+<p>12345678</p>
+<%- include('../includes/footer.ejs') %>

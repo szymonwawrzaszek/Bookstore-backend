@@ -1,0 +1,17 @@
+<%- include('../includes/nav.ejs') %>
+
+<% if(publishers.length > 0) { %>
+    <h2>Publishers:</h2>
+    <hr/>
+    <% publishers.forEach(publisher => { %>
+        <h4>
+            <a href="/publisher/<%= publisher.id %>">
+                <%= publisher.name %>
+            </a>     
+        </h4>    
+    <% }) %> 
+<% } else { %>    
+    <h2>No publishers yet!</h2>
+<% } %>   
+<a href="/publisher/add" class="btn btn-primary">Add publisher</a>
+<%- include('../includes/footer.ejs') %>

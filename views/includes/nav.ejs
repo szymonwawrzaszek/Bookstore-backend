@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
+    <title><%= title %></title>
+    <style>
+        .padding-20{
+            padding: 20px;
+        }
+        .bottom{
+            border-bottom: 1px solid #ccc;
+        }
+        .main{
+            margin: auto;
+            width: 50%;
+        }
+        .width-50{
+            width: 50%;
+            display: initial;
+        }
+        .button-submit {
+            float: right;
+            margin-top: 10px;
+        }
+        .user-links-box {
+            display: flex;
+            margin: 0px 0px 0px auto;
+        }
+        .error-box {
+            border: 1px solid red;
+            border-radius: 4px;
+            padding: 10px;
+        }
+        .username {
+            margin: auto;
+            padding-right: 10px;
+        }
+        .logout {
+            background: white;
+            border: 0;
+            color: #007bff;  
+        }
+        .logout:hover  {
+            color: #0558b1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav padding-20 bottom">
+        <a class="nav-link active" href="/books">All books</a>
+        <!-- <a class="nav-link disabled" href="/book/add">Add book</a> -->
+        <% if(isAuthenticated) { %>
+            <a class="nav-link active" href="/authors">All authors</a>
+            <a class="nav-link active" href="/publishers">All publishers</a>
+        <% } %>
+        <div class="user-links-box">
+            <% if(isAuthenticated) { %>
+                <p class="username" ><%= username %></p>
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit" class="nav-link active logout">Logout</button>
+                </form>
+                <!-- <a class="nav-link active" href="/logout">Logout</a> -->
+            <% } else {%>
+                <a class="nav-link active" href="/login">Login</a>
+                <a class="nav-link active" href="/register">Register</a>
+            <% } %>
+        </div>
+    </nav>   
+    <main class="main padding-20">

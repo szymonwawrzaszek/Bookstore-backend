@@ -1,0 +1,26 @@
+<%- include('../includes/nav.ejs') %>
+<h2>Register new account</h2>
+<hr/>
+<% if(errors.length > 0){ %>
+    <div class="error-box">
+        <% errors.forEach(err => { %>
+            <div><%= err %></div>  
+        <% }); %>
+    </div>
+<% } %>
+<form action="/register" method="post" class="form-group">
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="<%= oldInput.email %>" class="form-control"/>
+        <br/>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control"/>
+        <br/>
+        <label for="confirmPassword">Confirm password</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"></input>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    </div>
+    <button type="submit" class="btn btn-success button-submit">Sign Up</button>
+</form>
+
+<%- include('../includes/footer.ejs') %>
